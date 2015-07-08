@@ -1,0 +1,14 @@
+%h1.hide
+  = @theme.id
+  のボケ一覧
+
+- if @bokes.empty?
+  .text-muted
+    ボケがまだ登録されていません
+- else
+  - @bokes.each do |boke|
+    %hr
+    .theme-image
+      = image_tag boke.theme.uri
+    .boke-content
+      = boke.content

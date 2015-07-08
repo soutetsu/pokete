@@ -1,0 +1,13 @@
+%h1
+  あなたの投稿したお題
+
+%hr
+
+= link_to 'お題を投稿', new_my_theme_path, class: 'btn btn-primary'
+
+%hr
+
+- if @themes.empty?
+  まだありません
+- else
+  = render 'themes/list', themes: @themes

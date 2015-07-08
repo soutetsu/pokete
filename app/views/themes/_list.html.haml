@@ -1,0 +1,28 @@
+= paginate themes
+
+- themes.each do |theme|
+  .media
+    .media-left
+      = image_tag theme.uri, size: '128x128', class: 'media-object'
+    .media-body
+      %p
+        出題者 :
+        - if user_signed_in?
+          = link_to theme.user.email, my_user_path(theme.user)
+        - else
+          = theme.user.email
+      %p
+        カテゴリ :
+        = link_to theme.category.name, themes_path(category_id: theme.category.id), class: 'label label-default'
+      %p
+        = link_to "#{theme.bokes.count} 個のボケ", theme_bokes_path(theme)
+      %p
+        - if user_signed_in?
+          %ul.list-inline
+            - if theme.user.id == current_user.id
+              %li= link_to '編集', edit_my_theme_path(theme), class: 'btn btn-primary'
+              %li= link_to '削除', my_theme_path(theme), class: 'btn btn-danger', method: :delete, data: { confirm: '本当に削除しますか ?' }
+            - else
+              %li= link_to 'ボケる', new_my_theme_boke_path(theme_id: theme.id), class: 'btn btn-default'
+
+= paginate themes

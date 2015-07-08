@@ -1,0 +1,6 @@
+Category.create!(name: 'バカ')
+Category.create!(name: 'シュール')
+Category.create!(name: 'ブラック')
+Category.create!(name: '身内')
+Category.create!(name: '例え')
+Category.create!(name: 'その他')

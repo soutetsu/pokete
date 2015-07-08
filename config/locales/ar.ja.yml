@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      user: 'ユーザー'
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: 'Email アドレスが入力されていません'
+            password:
+              blank: 'パスワードが入力されていません'
+            password_confirmation:
+              confirmation: 'パスワードが一致しません'

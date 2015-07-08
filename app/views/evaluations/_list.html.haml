@@ -1,0 +1,16 @@
+.boke-evaluations
+  - if evaluations.present?
+    %h2 このボケへの評価 一覧
+    %hr.invisible
+    - evaluations.each do |evaluation|
+      .panel.panel-default
+        .panel-body
+          %p
+            評価点 :
+            %strong= evaluation.point
+          - if evaluation.comment.present?
+            %p= evaluation.comment
+          - if evaluation.user.id == current_user.id
+            %p= link_to '評価削除', my_theme_boke_evaluation_path(evaluation, theme_id: evaluation.boke.theme_id, boke_id: evaluation.boke.id), method: :delete, class: 'btn btn-danger'
+          - else
+            %p= link_to evaluation.user.email, my_user_path(evaluation.user)

@@ -1,0 +1,7 @@
+%ul.nav.nav-tabs
+  - if params['action'] == 'recent'
+    %li.active= link_to '新着順', recent_bokes_path
+    %li= link_to '人気順', popular_bokes_path
+  - if params['action'] == 'popular'
+    %li= link_to '新着順', recent_bokes_path
+    %li.active= link_to '人気順', popular_bokes_path

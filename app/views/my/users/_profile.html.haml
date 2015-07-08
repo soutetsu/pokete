@@ -1,0 +1,53 @@
+.row
+  .col-md-2
+    .text-center
+      = image_tag user.gravatar_url
+  .col-md-10
+    %table.table
+      %tr
+        %th.text-right
+          ID
+        %td
+          = user.id
+      %tr
+        %th.text-right
+          email
+        %td
+          = user.email
+      %tr
+        %th.text-right
+          ボケ投稿数
+        %td
+          = user.bokes.count
+      %tr
+        %th.text-right
+          お題投稿数
+        %td
+          = user.themes.count
+    %hr.invisible
+    - if user_signed_in?
+      - if user.id != current_user.id
+        #js-follow-button
+          - if current_user.following?(user)
+            = render 'unfollow_button'
+          - else
+            = render 'follow_button'
+
+%hr.invisible
+
+%div{role: 'tabpanel'}
+  %ul.nav.nav-tabs{role: 'tablist'}
+    %li.active{role: 'presentation'}
+      %a{aria: {controls: 'unopened'}, data: {toggle: 'tab'}, href: '#followed', role: 'tab'} お気に入り職人
+    %li{role: 'presentation'}
+      %a{aria: {controls: 'unopened'}, data: {toggle: 'tab'}, href: '#follower', role: 'tab'} お気に入られ職人
+  .tab-content
+    %hr.invisible
+    #followed.tab-pane.active{role: 'tabpanel'}
+      %ul
+        - user.following_users.each do |followed_user|
+          %li= link_to followed_user.email, my_user_path(followed_user)
+    #follower.tab-pane{role: 'tabpanel'}
+      %ul
+        - user.followers.each do |follower|
+          %li= link_to follower.email, my_user_path(follower)

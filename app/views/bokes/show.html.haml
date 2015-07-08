@@ -1,0 +1,21 @@
+%h1.hide
+  ボケ
+%h2
+  平均評価 :
+  = @boke.cached_weighted_average
+%hr
+.boke-image
+  = image_tag @boke.theme.uri
+.boke-content
+  = @boke.content
+%hr
+= render 'evaluations/list', evaluations: @boke.evaluations
+
+- if user_signed_in?
+  - if @boke.user_id == current_user.id
+    %ul.list-inline
+      %li= link_to '編集', edit_my_theme_boke_path(@boke, theme_id: @boke.theme_id), class: 'btn btn-primary'
+      %li= link_to '削除', my_theme_boke_path(@boke, theme_id: @boke.theme_id), class: 'btn btn-danger', method: :delete, data: {confirm: '本当に削除しますか ?'}
+  - else
+    - unless @boke.has_evaluated_by?(current_user)
+      = link_to 'このボケを評価する', new_my_theme_boke_evaluation_path(theme_id: @boke.theme_id, boke_id: @boke.id), class: 'btn btn-block btn-info'

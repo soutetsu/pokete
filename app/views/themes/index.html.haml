@@ -1,0 +1,11 @@
+%h1
+  = "#{@category.name} の" if @category
+  お題 一覧
+
+%hr
+
+= render 'share/categories'
+
+%hr.invisible
+
+= render 'list', themes: @themes

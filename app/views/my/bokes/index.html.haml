@@ -1,0 +1,9 @@
+%h1
+  あなたの投稿したボケ
+
+%hr
+
+- if @bokes.empty?
+  まだありません
+- else
+  = render 'bokes/list', bokes: @bokes

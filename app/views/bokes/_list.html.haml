@@ -1,0 +1,21 @@
+= paginate bokes
+
+- bokes.each do |boke|
+  .media
+    .media-left
+      = image_tag boke.theme.uri, size: '128x128', class: 'media-object'
+    .media-body
+      .media-heading
+        %p
+          = link_to boke.content, theme_boke_path(boke, theme_id: boke.theme_id)
+        %p
+          = "平均評価 : #{boke.cached_weighted_average}"
+        %p
+          = "投稿者 : #{boke.user.email}"
+        - if user_signed_in?
+          %ul.list-inline
+            - if boke.user.id == current_user.id
+              %li= link_to '編集', edit_my_theme_boke_path(boke, theme_id: boke.theme_id), class: 'btn btn-primary'
+              %li= link_to '削除', my_theme_boke_path(boke, theme_id: boke.theme_id), class: 'btn btn-danger', method: :delete, data: {confirm: '本当に削除しますか ?'}
+
+= paginate bokes

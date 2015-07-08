@@ -1,0 +1,16 @@
+%h1
+  職人ランキング
+
+%hr
+
+.user-ranking
+  - @users.each do |user|
+    .media
+      .media-left
+        = image_tag user.gravatar_url
+      .media-body
+        .user-ranking__user-name
+          %strong= user.email
+        .user-ranking__user-info
+          ボケ評価合計 :
+          %strong= user.total_evaluation_point

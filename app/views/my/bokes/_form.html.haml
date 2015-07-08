@@ -1,0 +1,14 @@
+- if @boke.new_record?
+  - url = my_theme_bokes_path(theme_id: @theme.id)
+- else
+  - url = my_theme_boke_path(@boke, theme_id: @theme.id)
+
+.text-center
+  = image_tag @theme.uri
+
+%hr
+
+= simple_form_for(@boke, url: url) do |f|
+  = f.input :content, label: 'ボケを入力して下さい'
+  = f.input :tag_list, input_html:{ data:{role:'tagsinput'}, value: f.object.tag_list.join(',') }, label: 'タグを入力して下さい'
+  = f.submit 'ボケる', class: 'btn btn-block btn-primary'

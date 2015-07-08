@@ -1,0 +1,6 @@
+.btn-group
+  = link_to '全て', request.path_info, class: 'btn btn-default'
+  - Category.all.each do |category|
+    = link_to category.name,
+        url_for(controller: params[:controller], action: params[:action], category_id: category.id),
+        class: 'btn btn-default'

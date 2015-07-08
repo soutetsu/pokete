@@ -1,0 +1,15 @@
+%h1
+  = "#{@category.name} の" if params[:category_id]
+  人気ボケ 一覧
+
+%hr
+
+= render 'tab'
+
+%hr.invisible
+
+= render 'share/categories'
+
+%hr.invisible
+
+= render 'list', bokes: @bokes

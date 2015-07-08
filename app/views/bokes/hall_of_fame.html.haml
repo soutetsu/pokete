@@ -1,0 +1,9 @@
+%h1
+  殿堂入りボケ
+
+%hr
+
+- if @bokes.blank?
+  殿堂入りボケが存在しません
+- else
+  = render 'list', bokes: @bokes
