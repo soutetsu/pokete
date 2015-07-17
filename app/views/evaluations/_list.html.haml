@@ -10,7 +10,7 @@
             %strong= evaluation.point
           - if evaluation.comment.present?
             %p= evaluation.comment
-          - if evaluation.user.id == current_user.id
+          - if evaluation.user == current_user
             %p= link_to '評価削除', my_theme_boke_evaluation_path(evaluation, theme_id: evaluation.boke.theme_id, boke_id: evaluation.boke.id), method: :delete, class: 'btn btn-danger'
           - else
             %p= link_to evaluation.user.email, my_user_path(evaluation.user)

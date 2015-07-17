@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       end
     end
     resources :bokes, only: [:index]
+    # 他のユーザーの情報を閲覧するコントローラが my にあるのは違和感
     resources :users, only: [:show] do
       member do
         post :follow

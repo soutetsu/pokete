@@ -43,6 +43,6 @@ class Boke < ActiveRecord::Base
   }
 
   def has_evaluated_by?(user)
-    self.evaluations.find_by(user_id: user.id).present?
+    self.evaluations.find_by(user: user).present?
   end
 end

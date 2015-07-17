@@ -56,6 +56,6 @@ class User < ActiveRecord::Base
   end
 
   def total_evaluation_point
-    self.bokes.inject(0) { |total, boke| total+boke.cached_weighted_total }
+    self.bokes.sum(:cached_weighted_total)
   end
 end
