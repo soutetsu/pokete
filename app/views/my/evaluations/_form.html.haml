@@ -5,6 +5,7 @@
   = @boke.content
 %hr
 
+-# bokes/_form.html.haml と同様に、ここもシンプルにできそう
 - if @evaluation.new_record?
   - url = my_theme_boke_evaluations_path(theme_id: @boke.theme_id, boke_id: @boke.id)
 - else

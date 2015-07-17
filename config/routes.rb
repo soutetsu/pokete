@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   devise_for :users
+  # 上の get 'users/rank' と被ってる
   resources :users, only: [] do
     collection do
       get :rank
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
       end
     end
     resources :bokes, only: [:index]
+    # 他のユーザーの情報を閲覧するコントローラが my にあるのは違和感
     resources :users, only: [:show] do
       member do
         post :follow

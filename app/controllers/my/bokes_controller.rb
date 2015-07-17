@@ -7,12 +7,12 @@ class My::BokesController < My::ApplicationController
   end
 
   def new
-    @boke = current_user.bokes.new(theme_id: @theme.id)
+    @boke = current_user.bokes.new(theme: @theme)
   end
 
   def create
     @boke = current_user.bokes.build(boke_params)
-    @boke.theme_id = @theme.id
+    @boke.theme = @theme
     respond_to do |format|
       if @boke.save
         format.html { redirect_to recent_bokes_path, notice: 'ボケを投稿しました' }
