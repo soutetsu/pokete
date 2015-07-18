@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-  get 'users/rank'
-
   root to: 'home#index'
 
   devise_for :users
-  # 上の get 'users/rank' と被ってる
+
   resources :users, only: [] do
     collection do
       get :rank
