@@ -23,13 +23,13 @@ Rails.application.routes.draw do
 
   namespace :my do
     get 'page', to: 'page#show', as: 'page'
-    resources :themes, only: [:index, :new, :create, :edit, :update, :destroy]  do
+    resources :themes do
       resources :bokes, only: [:new, :create, :edit, :update, :destroy]  do
         resources :evaluations, only: [:new, :create, :destroy]
       end
     end
     resources :bokes, only: [:index]
-    # 他のユーザーの情報を閲覧するコントローラが my にあるのは違和感
+    # TODO: 他のユーザーの情報を閲覧するコントローラが my にあるのは違和感
     resources :users, only: [:show] do
       member do
         post :follow
