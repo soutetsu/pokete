@@ -5,13 +5,7 @@
   = @boke.content
 %hr
 
--# bokes/_form.html.haml と同様に、ここもシンプルにできそう
-- if @evaluation.new_record?
-  - url = my_theme_boke_evaluations_path(theme_id: @boke.theme_id, boke_id: @boke.id)
-- else
-  - url = my_theme_boke_evaluation_path(@evaluation, theme_id: @boke.theme_id, boke_id: @boke.id)
-
-= simple_form_for(@evaluation, url: url) do |f|
+= simple_form_for(@evaluation, url: [:my, @boke.theme, @boke, @evaluation]) do |f|
   = f.input :point, label: '評価点を入力して下さい'
   = f.input :comment, label: 'コメントがあれば入力して下さい'
   = f.submit '評価を投稿', class: 'btn btn-block btn-primary'
