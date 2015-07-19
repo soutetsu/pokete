@@ -10,7 +10,10 @@
         = image_tag user.gravatar_url
       .media-body
         .user-ranking__user-name
-          %strong= user.email
+          - if user_signed_in?
+            = link_to user.email, my_user_path(user)
+          - else
+            = user.email
         .user-ranking__user-info
           ボケ評価合計 :
           %strong= user.total_evaluation_point
