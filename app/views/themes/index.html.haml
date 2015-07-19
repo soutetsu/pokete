@@ -3,6 +3,9 @@
   お題 一覧
 
 %hr
+- if user_signed_in?
+  = link_to 'お題を投稿', new_my_theme_path, class: 'btn btn-primary'
+%hr
 
 = render 'share/categories'
 
