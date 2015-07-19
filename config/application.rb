@@ -13,7 +13,7 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module RAILSAPPNAME # TODO: rename here
+module Pokete
   class Application < Rails::Application
     config.active_record.default_timezone = :local
     config.time_zone = 'Tokyo'
