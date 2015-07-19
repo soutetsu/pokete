@@ -11,7 +11,10 @@
         %p
           = "平均評価 : #{boke.cached_weighted_average}"
         %p
-          = "投稿者 : #{boke.user.email}"
+          - if user_signed_in?
+            = link_to boke.user.email, my_user_path(boke.user)
+          - else
+            = boke.user.email
         - if user_signed_in?
           %ul.list-inline
             - if boke.user == current_user
