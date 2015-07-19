@@ -24,6 +24,9 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'acts_as_votable', github: 'ryanto/acts_as_votable'
 gem 'acts_as_follower'
 gem 'gravtastic'
+gem 'carrierwave'
+gem 'rmagick'
+gem 'fog'
 
 group :development do
   gem 'annotate', '~> 2.6.6'
