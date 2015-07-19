@@ -13,6 +13,8 @@
 class Theme < ActiveRecord::Base
   paginates_per 5
 
+  mount_uploader :uri, ImageUploader
+
   belongs_to :user
   belongs_to :category
 
