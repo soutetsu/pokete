@@ -101,6 +101,9 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    dotenv (2.0.1)
+    dotenv-rails (2.0.1)
+      dotenv (= 2.0.1)
     erb2haml (0.1.5)
       html2haml
     erubis (2.7.0)
@@ -315,8 +318,6 @@ GEM
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
-    rails_config (0.4.2)
-      activesupport (>= 3.0)
     rails_serve_static_assets (0.0.4)
     rails_stdout_logging (0.0.3)
     railties (4.2.1)
@@ -407,6 +408,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   database_rewinder
   devise
+  dotenv-rails
   erb2haml
   factory_girl_rails (~> 4.5)
   faker
@@ -428,7 +430,6 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.1)
   rails_12factor
-  rails_config
   rmagick
   rspec-rails
   sass-rails (~> 5.0)
