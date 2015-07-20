@@ -14,9 +14,15 @@ module FeatureHelper
   end
 
   def create_boke(theme)
-    # visit new_my_theme_boke_path(theme_id: theme.id)
     visit new_my_theme_boke_path(theme)
     fill_in 'boke[content]', with: Faker::Lorem.paragraph
+    find('[name=commit]').click
+  end
+
+  def create_evaluation(boke)
+    visit new_my_theme_boke_evaluation_path(theme_id: boke.theme.id, boke_id: boke.id)
+    fill_in 'evaluation[point]', with: [*1..5].sample
+    fill_in 'evaluation[comment]', with: Faker::Lorem.paragraph
     find('[name=commit]').click
   end
 end
